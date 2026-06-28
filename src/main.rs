@@ -1,5 +1,7 @@
 use serenity::Client;
 use serenity::prelude::GatewayIntents;
+use crate::events::ping_event::PingEvent;
+use crate::events::ready_event::ReadyEvent;
 use crate::setting::BotSetting;
 
 mod events;
@@ -18,14 +20,17 @@ async fn main() {
             GatewayIntents::GUILD_MESSAGES |
             GatewayIntents::MESSAGE_CONTENT;
         
-        let client = Client::builder(bot_token, intents).await;
+        let client = Client::builder(bot_token, intents)
+            .event_handler(ReadyEvent)
+            .event_handler(PingEvent)
+            .await;
         
         // クライアントオブジェクトの作成に成功
         if let Ok(mut client) = client {
-            println!("clientの作成に成功");
+            println!("success to create Client");
             
             if let Err(e) = &client.start().await {
-                println!("スタッフエラー:{}", e.to_string());
+                println!("failed to start this bot:{}", e.to_string());
             }
         }
         // 失敗
