@@ -27,19 +27,19 @@ async fn main() {
         
         // クライアントオブジェクトの作成に成功
         if let Ok(mut client) = client {
-            println!("success to create Client");
+            println!("Success to create Client");
             
             if let Err(e) = &client.start().await {
-                println!("failed to start this bot:{}", e.to_string());
+                println!("Failed to start this bot:{}", e.to_string());
             }
         }
         // 失敗
         else {
-            println!("clientの作成に失敗");
+            println!("Failed to create Client");
         }
     }
     // 設定ファイルの読み込み失敗
     else {
-        println!("設定ファイルの読み込み処理に失敗しました");
+        println!("Failed to read setting file");
     }
 }

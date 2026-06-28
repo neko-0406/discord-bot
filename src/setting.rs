@@ -26,11 +26,11 @@ impl BotSetting {
                 bot_setting = Some(result);
             }
             else {
-                println!("設定ファイルの読み取りに失敗しました：{}", abs_file_path);
+                println!("Failed to read Setting File：{}", abs_file_path);
             }
         }
         else {
-            println!("設定ファイルのOpenに失敗しました：{}", abs_file_path);
+            println!("Failed to open Setting File：{}", abs_file_path);
         }
 
         bot_setting
